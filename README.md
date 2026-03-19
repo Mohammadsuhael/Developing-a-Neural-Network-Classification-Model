@@ -60,11 +60,7 @@ class PeopleClassifier(nn.Module):
       return x
 
 # Initialize the Model, Loss Function, and Optimizer
-# Initialize model
-model = PeopleClassifier(input_size=X_train.shape[1])
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(),lr=0.001)
-train_model(model,train_loader,criterion,optimizer,epochs=100)
+
 
 # Training Loop
 def train_model(model, train_loader, criterion, optimizer, epochs):
@@ -80,7 +76,11 @@ def train_model(model, train_loader, criterion, optimizer, epochs):
     if (epoch + 1) % 10 == 0:
         print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}')
 
-
+# Initialize model
+model = PeopleClassifier(input_size=X_train.shape[1])
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(),lr=0.001)
+train_model(model,train_loader,criterion,optimizer,epochs=100)
 
 ```
 
